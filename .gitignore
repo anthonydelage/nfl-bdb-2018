@@ -1,0 +1,13 @@
+# Local files
+credentials/
+data/
+
+# Virtual environments
+venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Miscellaneous
+.vscode
+.DS_Store

@@ -1,0 +1,1433 @@
+credentials:
+  bigquery: bigquery-admin.json
+
+data:
+  base_url: https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/
+  base_dir: ./data
+  games_url: games.csv
+  players_url: players.csv
+  plays_url: plays.csv
+  tracking_url:
+    - tracking_gameId_2017090700.csv
+    - tracking_gameId_2017091000.csv
+    - tracking_gameId_2017091001.csv
+    - tracking_gameId_2017091002.csv
+    - tracking_gameId_2017091003.csv
+    - tracking_gameId_2017091004.csv
+    - tracking_gameId_2017091005.csv
+    - tracking_gameId_2017091007.csv
+    - tracking_gameId_2017091008.csv
+    - tracking_gameId_2017091009.csv
+    - tracking_gameId_2017091010.csv
+    - tracking_gameId_2017091011.csv
+    - tracking_gameId_2017091012.csv
+    - tracking_gameId_2017091100.csv
+    - tracking_gameId_2017091101.csv
+    - tracking_gameId_2017091400.csv
+    - tracking_gameId_2017091700.csv
+    - tracking_gameId_2017091701.csv
+    - tracking_gameId_2017091702.csv
+    - tracking_gameId_2017091703.csv
+    - tracking_gameId_2017091704.csv
+    - tracking_gameId_2017091705.csv
+    - tracking_gameId_2017091706.csv
+    - tracking_gameId_2017091707.csv
+    - tracking_gameId_2017091708.csv
+    - tracking_gameId_2017091709.csv
+    - tracking_gameId_2017091710.csv
+    - tracking_gameId_2017091711.csv
+    - tracking_gameId_2017091712.csv
+    - tracking_gameId_2017091713.csv
+    - tracking_gameId_2017091800.csv
+    - tracking_gameId_2017092100.csv
+    - tracking_gameId_2017092400.csv
+    - tracking_gameId_2017092401.csv
+    - tracking_gameId_2017092402.csv
+    - tracking_gameId_2017092403.csv
+    - tracking_gameId_2017092404.csv
+    - tracking_gameId_2017092405.csv
+    - tracking_gameId_2017092406.csv
+    - tracking_gameId_2017092407.csv
+    - tracking_gameId_2017092408.csv
+    - tracking_gameId_2017092409.csv
+    - tracking_gameId_2017092410.csv
+    - tracking_gameId_2017092411.csv
+    - tracking_gameId_2017092412.csv
+    - tracking_gameId_2017092413.csv
+    - tracking_gameId_2017092500.csv
+    - tracking_gameId_2017092800.csv
+    - tracking_gameId_2017100100.csv
+    - tracking_gameId_2017100101.csv
+    - tracking_gameId_2017100102.csv
+    - tracking_gameId_2017100103.csv
+    - tracking_gameId_2017100104.csv
+    - tracking_gameId_2017100105.csv
+    - tracking_gameId_2017100106.csv
+    - tracking_gameId_2017100107.csv
+    - tracking_gameId_2017100108.csv
+    - tracking_gameId_2017100109.csv
+    - tracking_gameId_2017100110.csv
+    - tracking_gameId_2017100111.csv
+    - tracking_gameId_2017100112.csv
+    - tracking_gameId_2017100113.csv
+    - tracking_gameId_2017100200.csv
+    - tracking_gameId_2017100500.csv
+    - tracking_gameId_2017100800.csv
+    - tracking_gameId_2017100801.csv
+    - tracking_gameId_2017100802.csv
+    - tracking_gameId_2017100803.csv
+    - tracking_gameId_2017100804.csv
+    - tracking_gameId_2017100805.csv
+    - tracking_gameId_2017100806.csv
+    - tracking_gameId_2017100807.csv
+    - tracking_gameId_2017100808.csv
+    - tracking_gameId_2017100809.csv
+    - tracking_gameId_2017100810.csv
+    - tracking_gameId_2017100811.csv
+    - tracking_gameId_2017100900.csv
+    - tracking_gameId_2017101200.csv
+    - tracking_gameId_2017101500.csv
+    - tracking_gameId_2017101501.csv
+    - tracking_gameId_2017101502.csv
+    - tracking_gameId_2017101503.csv
+    - tracking_gameId_2017101504.csv
+    - tracking_gameId_2017101505.csv
+    - tracking_gameId_2017101506.csv
+    - tracking_gameId_2017101507.csv
+    - tracking_gameId_2017101508.csv
+    - tracking_gameId_2017101509.csv
+    - tracking_gameId_2017101510.csv
+    - tracking_gameId_2017101511.csv
+    - tracking_gameId_2017101600.csv
+  nflscrapr_path: nflscrapr.csv
+
+bigquery:
+  project_id: ad-big-data-bowl
+  dataset_id: raw
+  schemas:
+    - name: games
+      fields:
+      - name: season
+        original_name: season
+        type: STRING
+        mode: REQUIRED
+      - name: week
+        original_name: week
+        type: INT64
+        mode: REQUIRED
+      - name: game_date
+        original_name: gameDate
+        type: STRING
+        mode: REQUIRED
+      - name: game_id
+        original_name: gameId
+        type: STRING
+        mode: REQUIRED
+      - name: game_time_eastern
+        original_name: gameTimeEastern
+        type: TIME
+        mode: REQUIRED
+      - name: home_score
+        original_name: HomeScore
+        type: INT64
+        mode: REQUIRED
+      - name: visitor_score
+        original_name: VisitorScore
+        type: INT64
+        mode: REQUIRED
+      - name: home_team_abbr
+        original_name: homeTeamAbbr
+        type: STRING
+        mode: REQUIRED
+      - name: visitor_team_abbr
+        original_name: visitorTeamAbbr
+        type: STRING
+        mode: REQUIRED
+      - name: home_display_name
+        original_name: homeDisplayName
+        type: STRING
+        mode: REQUIRED
+      - name: visitor_display_name
+        original_name: visitorDisplayName
+        type: STRING
+        mode: REQUIRED
+      - name: stadium
+        original_name: Stadium
+        type: STRING
+        mode: REQUIRED
+      - name: location
+        original_name: Location
+        type: STRING
+        mode: REQUIRED
+      - name: stadium_type
+        original_name: StadiumType
+        type: STRING
+        mode: REQUIRED
+      - name: turf
+        original_name: Turf
+        type: STRING
+        mode: REQUIRED
+      - name: game_length
+        original_name: GameLength
+        type: STRING
+        mode: REQUIRED
+      - name: game_weather
+        original_name: GameWeather
+        type: STRING
+        mode: REQUIRED
+      - name: temperature
+        original_name: Temperature
+        type: FLOAT64
+        mode: REQUIRED
+      - name: humidity
+        original_name: Humidity
+        type: FLOAT64
+        mode: REQUIRED
+      - name: wind_speed
+        original_name: WindSpeed
+        type: FLOAT64
+        mode: NULLABLE
+      - name: wind_direction
+        original_name: WindDirection
+        type: STRING
+        mode: REQUIRED
+
+    - name: players
+      fields:
+      - name: nfl_id
+        original_name: nflId
+        type: STRING
+        mode: REQUIRED
+      - name: first_name
+        original_name: FirstName
+        type: STRING
+        mode: REQUIRED
+      - name: last_name
+        original_name: LastName
+        type: STRING
+        mode: REQUIRED
+      - name: position_abbr
+        original_name: PositionAbbr
+        type: STRING
+        mode: REQUIRED
+      - name: entry_year
+        original_name: EntryYear
+        type: INT64
+        mode: REQUIRED
+      - name: draft_round
+        original_name: DraftRound
+        type: FLOAT64
+        mode: NULLABLE
+      - name: draft_number
+        original_name: DraftNumber
+        type: FLOAT64
+        mode: NULLABLE
+      - name: height
+        original_name: Height
+        type: STRING
+        mode: REQUIRED
+      - name: weight
+        original_name: Weight
+        type: INT64
+        mode: REQUIRED
+      - name: college
+        original_name: College
+        type: STRING
+        mode: REQUIRED
+
+    - name: plays
+      fields:
+      - name: game_id
+        original_name: gameId
+        type: STRING
+        mode: REQUIRED
+      - name: play_id
+        original_name: playId
+        type: STRING
+        mode: REQUIRED
+      - name: quarter
+        original_name: quarter
+        type: INT64
+        mode: REQUIRED
+      - name: game_clock
+        original_name: GameClock
+        type: STRING
+        mode: REQUIRED
+      - name: down
+        original_name: down
+        type: INT64
+        mode: REQUIRED
+      - name: yards_to_go
+        original_name: yardsToGo
+        type: FLOAT64
+        mode: REQUIRED
+      - name: possession_team
+        original_name: possessionTeam
+        type: STRING
+        mode: REQUIRED
+      - name: yardline_side
+        original_name: yardlineSide
+        type: STRING
+        mode: REQUIRED
+      - name: yardline_number
+        original_name: yardlineNumber
+        type: FLOAT64
+        mode: REQUIRED
+      - name: offense_formation
+        original_name: offenseFormation
+        type: STRING
+        mode: REQUIRED
+      - name: personnel_offense
+        original_name: personnel.offense
+        type: STRING
+        mode: NULLABLE
+      - name: defenders_in_the_box
+        original_name: defendersInTheBox
+        type: INT64
+        mode: REQUIRED
+      - name: number_of_pass_rushers
+        original_name: numberOfPassRushers
+        type: INT64
+        mode: REQUIRED
+      - name: personnel_defense
+        original_name: personnel.defense
+        type: STRING
+        mode: NULLABLE
+      - name: home_score_before_play
+        original_name: HomeScoreBeforePlay
+        type: INT64
+        mode: REQUIRED
+      - name: visitor_score_before_play
+        original_name: VisitorScoreBeforePlay
+        type: INT64
+        mode: REQUIRED
+      - name: home_score_after_play
+        original_name: HomeScoreAfterPlay
+        type: INT64
+        mode: REQUIRED
+      - name: visitor_score_after_play
+        original_name: VisitorScoreAfterPlay
+        type: INT64
+        mode: REQUIRED
+      - name: is_penalty
+        original_name: isPenalty
+        type: BOOLEAN
+        mode: REQUIRED
+      - name: is_st_play
+        original_name: isSTPlay
+        type: BOOLEAN
+        mode: REQUIRED
+      - name: special_teams_play_type
+        original_name: SpecialTeamsPlayType
+        type: STRING
+        mode: NULLABLE
+      - name: kick_return_yardage
+        original_name: KickReturnYardage
+        type: FLOAT64
+        mode: NULLABLE
+      - name: pass_length
+        original_name: PassLength
+        type: FLOAT64
+        mode: NULLABLE
+      - name: pass_result
+        original_name: PassResult
+        type: STRING
+        mode: NULLABLE
+      - name: yards_after_catch
+        original_name: YardsAfterCatch
+        type: FLOAT64
+        mode: NULLABLE
+      - name: play_result
+        original_name: PlayResult
+        type: INT64
+        mode: REQUIRED
+      - name: play_description
+        original_name: playDescription
+        type: STRING
+        mode: REQUIRED
+
+    - name: tracking
+      fields:
+      - name: time
+        original_name: time
+        type: TIMESTAMP
+        mode: REQUIRED
+      - name: x
+        original_name: x
+        type: FLOAT64
+        mode: REQUIRED
+      - name: y
+        original_name: y
+        type: FLOAT64
+        mode: REQUIRED
+      - name: speed
+        original_name: s
+        type: FLOAT64
+        mode: REQUIRED
+      - name: distance
+        original_name: dis
+        type: FLOAT64
+        mode: REQUIRED
+      - name: direction
+        original_name: dir
+        type: FLOAT64
+        mode: REQUIRED
+      - name: event
+        original_name: event
+        type: STRING
+        mode: NULLABLE
+      - name: nfl_id
+        original_name: nflId
+        type: STRING
+        mode: REQUIRED
+      - name: display_name
+        original_name: displayName
+        type: STRING
+        mode: REQUIRED
+      - name: jersey_number
+        original_name: jerseyNumber
+        type: STRING
+        mode: REQUIRED
+      - name: team
+        original_name: team
+        type: STRING
+        mode: REQUIRED
+      - name: frame_id
+        original_name: frame.id
+        type: INT64
+        mode: REQUIRED
+      - name: game_id
+        original_name: gameId
+        type: STRING
+        mode: REQUIRED
+      - name: play_id
+        original_name: playId
+        type: STRING
+        mode: REQUIRED
+
+    - name: nflscrapr
+      fields:
+        - name: play_id
+          original_name: play_id
+          type: STRING
+          mode: REQUIRED
+        - name: game_id
+          original_name: game_id
+          type: STRING
+          mode: REQUIRED
+        - name: home_team
+          original_name: home_team
+          type: STRING
+          mode: NULLABLE
+        - name: away_team
+          original_name: away_team
+          type: STRING
+          mode: NULLABLE
+        - name: posteam
+          original_name: posteam
+          type: STRING
+          mode: NULLABLE
+        - name: posteam_type
+          original_name: posteam_type
+          type: STRING
+          mode: NULLABLE
+        - name: defteam
+          original_name: defteam
+          type: STRING
+          mode: NULLABLE
+        - name: side_of_field
+          original_name: side_of_field
+          type: STRING
+          mode: NULLABLE
+        - name: yardline_100
+          original_name: yardline_100
+          type: INT64
+          mode: NULLABLE
+        - name: game_date
+          original_name: game_date
+          type: DATE
+          mode: NULLABLE
+        - name: quarter_seconds_remaining
+          original_name: quarter_seconds_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: half_seconds_remaining
+          original_name: half_seconds_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: game_seconds_remaining
+          original_name: game_seconds_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: game_half
+          original_name: game_half
+          type: STRING
+          mode: NULLABLE
+        - name: quarter_end
+          original_name: quarter_end
+          type: INT64
+          mode: NULLABLE
+        - name: drive
+          original_name: drive
+          type: INT64
+          mode: NULLABLE
+        - name: sp
+          original_name: sp
+          type: INT64
+          mode: NULLABLE
+        - name: qtr
+          original_name: qtr
+          type: INT64
+          mode: NULLABLE
+        - name: down
+          original_name: down
+          type: INT64
+          mode: NULLABLE
+        - name: goal_to_go
+          original_name: goal_to_go
+          type: INT64
+          mode: NULLABLE
+        - name: time
+          original_name: time
+          type: STRING
+          mode: NULLABLE
+        - name: yrdln
+          original_name: yrdln
+          type: STRING
+          mode: NULLABLE
+        - name: ydstogo
+          original_name: ydstogo
+          type: INT64
+          mode: NULLABLE
+        - name: ydsnet
+          original_name: ydsnet
+          type: INT64
+          mode: NULLABLE
+        - name: description
+          original_name: desc
+          type: STRING
+          mode: NULLABLE
+        - name: play_type
+          original_name: play_type
+          type: STRING
+          mode: NULLABLE
+        - name: yards_gained
+          original_name: yards_gained
+          type: INT64
+          mode: NULLABLE
+        - name: shotgun
+          original_name: shotgun
+          type: INT64
+          mode: NULLABLE
+        - name: no_huddle
+          original_name: no_huddle
+          type: INT64
+          mode: NULLABLE
+        - name: qb_dropback
+          original_name: qb_dropback
+          type: INT64
+          mode: NULLABLE
+        - name: qb_kneel
+          original_name: qb_kneel
+          type: INT64
+          mode: NULLABLE
+        - name: qb_spike
+          original_name: qb_spike
+          type: INT64
+          mode: NULLABLE
+        - name: qb_scramble
+          original_name: qb_scramble
+          type: INT64
+          mode: NULLABLE
+        - name: pass_length
+          original_name: pass_length
+          type: STRING
+          mode: NULLABLE
+        - name: pass_location
+          original_name: pass_location
+          type: STRING
+          mode: NULLABLE
+        - name: air_yards
+          original_name: air_yards
+          type: INT64
+          mode: NULLABLE
+        - name: yards_after_catch
+          original_name: yards_after_catch
+          type: INT64
+          mode: NULLABLE
+        - name: run_location
+          original_name: run_location
+          type: STRING
+          mode: NULLABLE
+        - name: run_gap
+          original_name: run_gap
+          type: STRING
+          mode: NULLABLE
+        - name: field_goal_result
+          original_name: field_goal_result
+          type: STRING
+          mode: NULLABLE
+        - name: kick_distance
+          original_name: kick_distance
+          type: INT64
+          mode: NULLABLE
+        - name: extra_point_result
+          original_name: extra_point_result
+          type: STRING
+          mode: NULLABLE
+        - name: two_point_conv_result
+          original_name: two_point_conv_result
+          type: STRING
+          mode: NULLABLE
+        - name: home_timeouts_remaining
+          original_name: home_timeouts_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: away_timeouts_remaining
+          original_name: away_timeouts_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: timeout
+          original_name: timeout
+          type: INT64
+          mode: NULLABLE
+        - name: timeout_team
+          original_name: timeout_team
+          type: STRING
+          mode: NULLABLE
+        - name: td_team
+          original_name: td_team
+          type: STRING
+          mode: NULLABLE
+        - name: posteam_timeouts_remaining
+          original_name: posteam_timeouts_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: defteam_timeouts_remaining
+          original_name: defteam_timeouts_remaining
+          type: INT64
+          mode: NULLABLE
+        - name: total_home_score
+          original_name: total_home_score
+          type: INT64
+          mode: NULLABLE
+        - name: total_away_score
+          original_name: total_away_score
+          type: INT64
+          mode: NULLABLE
+        - name: posteam_score
+          original_name: posteam_score
+          type: INT64
+          mode: NULLABLE
+        - name: defteam_score
+          original_name: defteam_score
+          type: INT64
+          mode: NULLABLE
+        - name: score_differential
+          original_name: score_differential
+          type: INT64
+          mode: NULLABLE
+        - name: posteam_score_post
+          original_name: posteam_score_post
+          type: INT64
+          mode: NULLABLE
+        - name: defteam_score_post
+          original_name: defteam_score_post
+          type: INT64
+          mode: NULLABLE
+        - name: score_differential_post
+          original_name: score_differential_post
+          type: INT64
+          mode: NULLABLE
+        - name: no_score_prob
+          original_name: no_score_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: opp_fg_prob
+          original_name: opp_fg_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: opp_safety_prob
+          original_name: opp_safety_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: opp_td_prob
+          original_name: opp_td_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: fg_prob
+          original_name: fg_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: safety_prob
+          original_name: safety_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: td_prob
+          original_name: td_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: extra_point_prob
+          original_name: extra_point_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: two_point_conversion_prob
+          original_name: two_point_conversion_prob
+          type: FLOAT64
+          mode: NULLABLE
+        - name: ep
+          original_name: ep
+          type: FLOAT64
+          mode: NULLABLE
+        - name: epa
+          original_name: epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_epa
+          original_name: total_home_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_epa
+          original_name: total_away_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_rush_epa
+          original_name: total_home_rush_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_rush_epa
+          original_name: total_away_rush_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_pass_epa
+          original_name: total_home_pass_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_pass_epa
+          original_name: total_away_pass_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: air_epa
+          original_name: air_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: yac_epa
+          original_name: yac_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: comp_air_epa
+          original_name: comp_air_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: comp_yac_epa
+          original_name: comp_yac_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_comp_air_epa
+          original_name: total_home_comp_air_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_comp_air_epa
+          original_name: total_away_comp_air_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_comp_yac_epa
+          original_name: total_home_comp_yac_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_comp_yac_epa
+          original_name: total_away_comp_yac_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_raw_air_epa
+          original_name: total_home_raw_air_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_raw_air_epa
+          original_name: total_away_raw_air_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_raw_yac_epa
+          original_name: total_home_raw_yac_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_raw_yac_epa
+          original_name: total_away_raw_yac_epa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: wp
+          original_name: wp
+          type: FLOAT64
+          mode: NULLABLE
+        - name: def_wp
+          original_name: def_wp
+          type: FLOAT64
+          mode: NULLABLE
+        - name: home_wp
+          original_name: home_wp
+          type: FLOAT64
+          mode: NULLABLE
+        - name: away_wp
+          original_name: away_wp
+          type: FLOAT64
+          mode: NULLABLE
+        - name: wpa
+          original_name: wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: home_wp_post
+          original_name: home_wp_post
+          type: FLOAT64
+          mode: NULLABLE
+        - name: away_wp_post
+          original_name: away_wp_post
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_rush_wpa
+          original_name: total_home_rush_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_rush_wpa
+          original_name: total_away_rush_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_pass_wpa
+          original_name: total_home_pass_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_pass_wpa
+          original_name: total_away_pass_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: air_wpa
+          original_name: air_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: yac_wpa
+          original_name: yac_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: comp_air_wpa
+          original_name: comp_air_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: comp_yac_wpa
+          original_name: comp_yac_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_comp_air_wpa
+          original_name: total_home_comp_air_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_comp_air_wpa
+          original_name: total_away_comp_air_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_comp_yac_wpa
+          original_name: total_home_comp_yac_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_comp_yac_wpa
+          original_name: total_away_comp_yac_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_raw_air_wpa
+          original_name: total_home_raw_air_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_raw_air_wpa
+          original_name: total_away_raw_air_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_home_raw_yac_wpa
+          original_name: total_home_raw_yac_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: total_away_raw_yac_wpa
+          original_name: total_away_raw_yac_wpa
+          type: FLOAT64
+          mode: NULLABLE
+        - name: punt_blocked
+          original_name: punt_blocked
+          type: INT64
+          mode: NULLABLE
+        - name: first_down_rush
+          original_name: first_down_rush
+          type: INT64
+          mode: NULLABLE
+        - name: first_down_pass
+          original_name: first_down_pass
+          type: INT64
+          mode: NULLABLE
+        - name: first_down_penalty
+          original_name: first_down_penalty
+          type: INT64
+          mode: NULLABLE
+        - name: third_down_converted
+          original_name: third_down_converted
+          type: INT64
+          mode: NULLABLE
+        - name: third_down_failed
+          original_name: third_down_failed
+          type: INT64
+          mode: NULLABLE
+        - name: fourth_down_converted
+          original_name: fourth_down_converted
+          type: INT64
+          mode: NULLABLE
+        - name: fourth_down_failed
+          original_name: fourth_down_failed
+          type: INT64
+          mode: NULLABLE
+        - name: incomplete_pass
+          original_name: incomplete_pass
+          type: INT64
+          mode: NULLABLE
+        - name: touchback
+          original_name: touchback
+          type: INT64
+          mode: NULLABLE
+        - name: interception
+          original_name: interception
+          type: INT64
+          mode: NULLABLE
+        - name: punt_inside_twenty
+          original_name: punt_inside_twenty
+          type: INT64
+          mode: NULLABLE
+        - name: punt_in_endzone
+          original_name: punt_in_endzone
+          type: INT64
+          mode: NULLABLE
+        - name: punt_out_of_bounds
+          original_name: punt_out_of_bounds
+          type: INT64
+          mode: NULLABLE
+        - name: punt_downed
+          original_name: punt_downed
+          type: INT64
+          mode: NULLABLE
+        - name: punt_fair_catch
+          original_name: punt_fair_catch
+          type: INT64
+          mode: NULLABLE
+        - name: kickoff_inside_twenty
+          original_name: kickoff_inside_twenty
+          type: INT64
+          mode: NULLABLE
+        - name: kickoff_in_endzone
+          original_name: kickoff_in_endzone
+          type: INT64
+          mode: NULLABLE
+        - name: kickoff_out_of_bounds
+          original_name: kickoff_out_of_bounds
+          type: INT64
+          mode: NULLABLE
+        - name: kickoff_downed
+          original_name: kickoff_downed
+          type: INT64
+          mode: NULLABLE
+        - name: kickoff_fair_catch
+          original_name: kickoff_fair_catch
+          type: INT64
+          mode: NULLABLE
+        - name: fumble_forced
+          original_name: fumble_forced
+          type: INT64
+          mode: NULLABLE
+        - name: fumble_not_forced
+          original_name: fumble_not_forced
+          type: INT64
+          mode: NULLABLE
+        - name: fumble_out_of_bounds
+          original_name: fumble_out_of_bounds
+          type: INT64
+          mode: NULLABLE
+        - name: solo_tackle
+          original_name: solo_tackle
+          type: INT64
+          mode: NULLABLE
+        - name: safety
+          original_name: safety
+          type: INT64
+          mode: NULLABLE
+        - name: penalty
+          original_name: penalty
+          type: INT64
+          mode: NULLABLE
+        - name: tackled_for_loss
+          original_name: tackled_for_loss
+          type: INT64
+          mode: NULLABLE
+        - name: fumble_lost
+          original_name: fumble_lost
+          type: INT64
+          mode: NULLABLE
+        - name: own_kickoff_recovery
+          original_name: own_kickoff_recovery
+          type: INT64
+          mode: NULLABLE
+        - name: own_kickoff_recovery_td
+          original_name: own_kickoff_recovery_td
+          type: INT64
+          mode: NULLABLE
+        - name: qb_hit
+          original_name: qb_hit
+          type: INT64
+          mode: NULLABLE
+        - name: rush_attempt
+          original_name: rush_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: pass_attempt
+          original_name: pass_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: sack
+          original_name: sack
+          type: INT64
+          mode: NULLABLE
+        - name: touchdown
+          original_name: touchdown
+          type: INT64
+          mode: NULLABLE
+        - name: pass_touchdown
+          original_name: pass_touchdown
+          type: INT64
+          mode: NULLABLE
+        - name: rush_touchdown
+          original_name: rush_touchdown
+          type: INT64
+          mode: NULLABLE
+        - name: return_touchdown
+          original_name: return_touchdown
+          type: INT64
+          mode: NULLABLE
+        - name: extra_point_attempt
+          original_name: extra_point_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: two_point_attempt
+          original_name: two_point_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: field_goal_attempt
+          original_name: field_goal_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: kickoff_attempt
+          original_name: kickoff_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: punt_attempt
+          original_name: punt_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: fumble
+          original_name: fumble
+          type: INT64
+          mode: NULLABLE
+        - name: complete_pass
+          original_name: complete_pass
+          type: INT64
+          mode: NULLABLE
+        - name: assist_tackle
+          original_name: assist_tackle
+          type: INT64
+          mode: NULLABLE
+        - name: lateral_reception
+          original_name: lateral_reception
+          type: INT64
+          mode: NULLABLE
+        - name: lateral_rush
+          original_name: lateral_rush
+          type: INT64
+          mode: NULLABLE
+        - name: lateral_return
+          original_name: lateral_return
+          type: INT64
+          mode: NULLABLE
+        - name: lateral_recovery
+          original_name: lateral_recovery
+          type: INT64
+          mode: NULLABLE
+        - name: passer_player_id
+          original_name: passer_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: passer_player_name
+          original_name: passer_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: receiver_player_id
+          original_name: receiver_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: receiver_player_name
+          original_name: receiver_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: rusher_player_id
+          original_name: rusher_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: rusher_player_name
+          original_name: rusher_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_receiver_player_id
+          original_name: lateral_receiver_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_receiver_player_name
+          original_name: lateral_receiver_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_rusher_player_id
+          original_name: lateral_rusher_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_rusher_player_name
+          original_name: lateral_rusher_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_sack_player_id
+          original_name: lateral_sack_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_sack_player_name
+          original_name: lateral_sack_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: interception_player_id
+          original_name: interception_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: interception_player_name
+          original_name: interception_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_interception_player_id
+          original_name: lateral_interception_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_interception_player_name
+          original_name: lateral_interception_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: punt_returner_player_id
+          original_name: punt_returner_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: punt_returner_player_name
+          original_name: punt_returner_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_punt_returner_player_id
+          original_name: lateral_punt_returner_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_punt_returner_player_name
+          original_name: lateral_punt_returner_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: kickoff_returner_player_name
+          original_name: kickoff_returner_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: kickoff_returner_player_id
+          original_name: kickoff_returner_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_kickoff_returner_player_id
+          original_name: lateral_kickoff_returner_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: lateral_kickoff_returner_player_name
+          original_name: lateral_kickoff_returner_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: punter_player_id
+          original_name: punter_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: punter_player_name
+          original_name: punter_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: kicker_player_name
+          original_name: kicker_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: kicker_player_id
+          original_name: kicker_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: own_kickoff_recovery_player_id
+          original_name: own_kickoff_recovery_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: own_kickoff_recovery_player_name
+          original_name: own_kickoff_recovery_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: blocked_player_id
+          original_name: blocked_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: blocked_player_name
+          original_name: blocked_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: tackle_for_loss_1_player_id
+          original_name: tackle_for_loss_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: tackle_for_loss_1_player_name
+          original_name: tackle_for_loss_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: tackle_for_loss_2_player_id
+          original_name: tackle_for_loss_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: tackle_for_loss_2_player_name
+          original_name: tackle_for_loss_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: qb_hit_1_player_id
+          original_name: qb_hit_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: qb_hit_1_player_name
+          original_name: qb_hit_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: qb_hit_2_player_id
+          original_name: qb_hit_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: qb_hit_2_player_name
+          original_name: qb_hit_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: forced_fumble_player_1_team
+          original_name: forced_fumble_player_1_team
+          type: STRING
+          mode: NULLABLE
+        - name: forced_fumble_player_1_player_id
+          original_name: forced_fumble_player_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: forced_fumble_player_1_player_name
+          original_name: forced_fumble_player_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: forced_fumble_player_2_team
+          original_name: forced_fumble_player_2_team
+          type: STRING
+          mode: NULLABLE
+        - name: forced_fumble_player_2_player_id
+          original_name: forced_fumble_player_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: forced_fumble_player_2_player_name
+          original_name: forced_fumble_player_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: solo_tackle_1_team
+          original_name: solo_tackle_1_team
+          type: STRING
+          mode: NULLABLE
+        - name: solo_tackle_2_team
+          original_name: solo_tackle_2_team
+          type: STRING
+          mode: NULLABLE
+        - name: solo_tackle_1_player_id
+          original_name: solo_tackle_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: solo_tackle_2_player_id
+          original_name: solo_tackle_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: solo_tackle_1_player_name
+          original_name: solo_tackle_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: solo_tackle_2_player_name
+          original_name: solo_tackle_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_1_player_id
+          original_name: assist_tackle_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_1_player_name
+          original_name: assist_tackle_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_1_team
+          original_name: assist_tackle_1_team
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_2_player_id
+          original_name: assist_tackle_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_2_player_name
+          original_name: assist_tackle_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_2_team
+          original_name: assist_tackle_2_team
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_3_player_id
+          original_name: assist_tackle_3_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_3_player_name
+          original_name: assist_tackle_3_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_3_team
+          original_name: assist_tackle_3_team
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_4_player_id
+          original_name: assist_tackle_4_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_4_player_name
+          original_name: assist_tackle_4_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: assist_tackle_4_team
+          original_name: assist_tackle_4_team
+          type: STRING
+          mode: NULLABLE
+        - name: pass_defense_1_player_id
+          original_name: pass_defense_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: pass_defense_1_player_name
+          original_name: pass_defense_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: pass_defense_2_player_id
+          original_name: pass_defense_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: pass_defense_2_player_name
+          original_name: pass_defense_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: fumbled_1_team
+          original_name: fumbled_1_team
+          type: STRING
+          mode: NULLABLE
+        - name: fumbled_1_player_id
+          original_name: fumbled_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: fumbled_1_player_name
+          original_name: fumbled_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: fumbled_2_player_id
+          original_name: fumbled_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: fumbled_2_player_name
+          original_name: fumbled_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: fumbled_2_team
+          original_name: fumbled_2_team
+          type: STRING
+          mode: NULLABLE
+        - name: fumble_recovery_1_team
+          original_name: fumble_recovery_1_team
+          type: STRING
+          mode: NULLABLE
+        - name: fumble_recovery_1_yards
+          original_name: fumble_recovery_1_yards
+          type: INT64
+          mode: NULLABLE
+        - name: fumble_recovery_1_player_id
+          original_name: fumble_recovery_1_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: fumble_recovery_1_player_name
+          original_name: fumble_recovery_1_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: fumble_recovery_2_team
+          original_name: fumble_recovery_2_team
+          type: STRING
+          mode: NULLABLE
+        - name: fumble_recovery_2_yards
+          original_name: fumble_recovery_2_yards
+          type: INT64
+          mode: NULLABLE
+        - name: fumble_recovery_2_player_id
+          original_name: fumble_recovery_2_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: fumble_recovery_2_player_name
+          original_name: fumble_recovery_2_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: return_team
+          original_name: return_team
+          type: STRING
+          mode: NULLABLE
+        - name: return_yards
+          original_name: return_yards
+          type: INT64
+          mode: NULLABLE
+        - name: penalty_team
+          original_name: penalty_team
+          type: STRING
+          mode: NULLABLE
+        - name: penalty_player_id
+          original_name: penalty_player_id
+          type: STRING
+          mode: NULLABLE
+        - name: penalty_player_name
+          original_name: penalty_player_name
+          type: STRING
+          mode: NULLABLE
+        - name: penalty_yards
+          original_name: penalty_yards
+          type: INT64
+          mode: NULLABLE
+        - name: replay_or_challenge
+          original_name: replay_or_challenge
+          type: INT64
+          mode: NULLABLE
+        - name: replay_or_challenge_result
+          original_name: replay_or_challenge_result
+          type: STRING
+          mode: NULLABLE
+        - name: penalty_type
+          original_name: penalty_type
+          type: STRING
+          mode: NULLABLE
+        - name: defensive_two_point_attempt
+          original_name: defensive_two_point_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: defensive_two_point_conv
+          original_name: defensive_two_point_conv
+          type: INT64
+          mode: NULLABLE
+        - name: defensive_extra_point_attempt
+          original_name: defensive_extra_point_attempt
+          type: INT64
+          mode: NULLABLE
+        - name: defensive_extra_point_conv
+          original_name: defensive_extra_point_conv
+          type: INT64
+          mode: NULLABLE
