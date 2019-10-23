@@ -5,8 +5,7 @@ SELECT
 FROM
   (
     SELECT
-      game_id,
-      play_id,
+      gameplay_id,,
       MAX(CASE WHEN position = 'QB' THEN nfl_id END) AS qb_nfl_id,
       MAX(CASE WHEN position = 'QB' THEN display_name END) AS qb_name,
       MAX(CASE WHEN targeted_receiver_flag = 1 THEN nfl_id END) AS receiver_nfl_id,
@@ -26,6 +25,7 @@ FROM
       MAX(arrived_sideline_distance) AS arrived_sideline_distance,
       MAX(FLOOR(arrived_ball_x)) AS arrived_x,
       MAX(FLOOR(arrived_ball_y)) AS arrived_y,
+      MAX(yardline_true) AS yardline_true,
       MIN(CASE WHEN player_side = 'defense' THEN pass_ball_distance END) AS closest_pass_rusher_distance,
       MIN(CASE WHEN player_side = 'defense' THEN arrived_ball_distance END) AS closest_pass_defender_distance,
       MIN(CASE WHEN player_side = 'defense' THEN arrived_pred_ball_distance END) AS closest_pred_pass_defender_distance,
@@ -45,5 +45,5 @@ FROM
           personnel_offense_type = 'conventional'
             AND play_epa IS NOT NULL
       )
-    GROUP BY 1, 2
+    GROUP BY 1
   )
